@@ -14,35 +14,6 @@ try:
     import webbrowser
     from FlightRadar24.api import FlightRadar24API
     from pyflightdata import FlightData
-except ImportError as imp:
-    print("[!] WARNING: Not all packages used in this program have been installed !")
-    sleep(1)
-    print("[+] Ignoring warning...")
-    sleep(1)
-    if sys.platform.startswith('linux'):
-        if os.geteuid() != 0:
-            print("[!] Root user not detected !")
-            sleep(2)
-            print("[+] Trying to enable root user...")
-            sleep(1)
-            system(sudo su)
-            try:
-                system(sudo pip install -r requirements.txt)
-            except Exception as ex:
-                print("[!] Error !")
-                sleep(1)
-                print(ex)
-                sleep(2)
-                print("[+] Exiting...")
-                quit(0)
-        else:
-            system("sudo pip install -r requirements.txt")
-            
-    elif sys.platform == 'darwin':
-        system("python -m pip install requirements.txt")
-        
-    elif platform.system() == 'Windows':
-        system("pip install -r requirements.txt")
 
 def ProgInfo():
     author = 'new92'
